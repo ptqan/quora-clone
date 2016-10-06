@@ -1,0 +1,32 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700';
+
+$font-stack:   'Open Sans', sans-serif;
+$header_fonts: 'Montserrat', sans-serif;
+$primary-color: #000000;
+$spacing: 20px;
+$border-color: 1px solid #EBEBEB;
+
+
+body {
+  font: 14px $font-stack;
+  color: $primary-color;
+}
+
+.form-controller {
+	margin-top:$spacing;
+	text-align:center;
+	padding: $spacing;
+	border: $border-color;
+}
+
+#footer {
+	text-align:center;
+	border-top: $border-color;
+	padding-top: $spacing;
+	margin-top: $spacing;
+	
+}
+
+
+
+
