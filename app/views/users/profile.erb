@@ -1,0 +1,15 @@
+<div class="container">
+	<p>Welcome <%= @current_user.full_name %></p>
+	<h1>This is the profile Page</h1>
+
+		<a href="/questions/new">Ask a question</a>
+
+		<a href="/my_questions">View My Questions</a>
+
+		<a href="/questions">View all questions</a>
+
+		<form action="/logout" method="post">
+			<input type="submit" value="Log out">
+		</form>
+</div>
+

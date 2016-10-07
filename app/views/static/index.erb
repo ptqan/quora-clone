@@ -1,48 +1,34 @@
 <div class="container">
-	<div class="form-controller">
-		<div class="row">
-			<img src="img/quora-logo.jpg">
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				<form id="signup" action="/users" method="post">
-					<table>
-						<tr>
-							<td><input type="text" name="full_name" placeholder="Full Name"></td>
-						</tr>
-						<tr>
-							<td><input type="text" name="email" placeholder="Email"></td>
-						</tr>
-						<tr>
-							<td><input type="text" name="password" placeholder="Password"></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="Sign Up"></td>
-						</tr>
-						<tr>
-							<td>Error:<%= @flash_msg %></td>
-						</tr>
-					</table>
+	<div class="row">
+		<h1>This is Listing Page</h1>
+		<ul>
+			<% @questions.each do |x|%>
+			<li><%= x.full_question.to_s + "/" + x.user.full_name.to_s %> 
+				<br/>
+				<em>
+					<% if x.answers %>
+					<ul>
+						<% x.answers.each do |y| %>
+						<li><%= y.full_answer.to_s + " - " + y.user.full_name.to_s %>
+							<br/>
+							<a href="/questions/<%= x.id %>/answers/<%= y.id %>/edit">Edit</a> | 
+							<!-- DELETE !-->
+							<form action="/questions/<%= x.id %>/answers/<%= y.id %>" method="post">
+							<input type="submit" value="Delete">
+						</form>
+						</li>
+						<% end %>
+					</ul>
+					<% end %>
+				</em>
+				<br/>
+				<form action="/questions/<%= x.id %>/answers/new" method="get">
+					<input type="submit" value="Answer!">
 				</form>
-			</div>
-			<div class="col-sm-6">
-				<form id="login" action="/login" method="post">
-					<table>
-						<tr>
-							<td><input type="text" name="email" placeholder="Email"></td>
-						</tr>
-						<tr>
-							<td><input type="text" name="password" placeholder="Password"></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="Login"></td>
-						</tr>
-						<tr>
-							<td>Error:<%= @login_msg %></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</div>
+			</li>
+			<% end %>
+		</ul>
+
 	</div>
 </div>
+<a href="/homepage">Back to Profile Page</a>

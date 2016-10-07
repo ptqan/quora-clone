@@ -1,0 +1,12 @@
+<!-- This is answer index !-->
+<div class="container">
+	<h1>Edit your answer</h1>
+	<div class="row">
+			<h1><%= @question.full_question %></h1>
+			<form action="/questions/<%= @question.id %>/answers/<%= @answer.id %>" method="post">
+				<input type="hidden" name="_method" value="put">
+				<input type="text" value="<%= @answer.full_answer %>" name="updated_answer">
+				<input type="submit" value="Update!">
+			</form>
+	</div>
+</div>
