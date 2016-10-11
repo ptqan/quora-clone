@@ -8,7 +8,7 @@
 				<li><a href="#" class="selected">Top Stories</a></li>
 				<% if logged_in? %>
 				<li><a href="/my_questions">My Questions</a></li>
-				<li><a href="#">My Answers</a></li>
+				<li><a href="/my_answers">My Answers</a></li>
 				<% else %>
 				<li><a href="#" data-toggle="modal" data-target="#myModal">My Questions</a></li>
 				<li><a href="#" data-toggle="modal" data-target="#myModal">My Answers</a></li>
@@ -33,7 +33,13 @@
 							<ul>
 								<p style="font-size:16px; color:#000000"><% x.answers.reverse_each do |y| %></p>
 								<li>
-									<%= y.full_answer.to_s.truncate_words(30) %>
+									<% if y.full_answer.to_s.length > 100 %>
+										<p class="trunc"><%= y.full_answer.to_s.truncate_words(30) %> <a href="#" class="read-more"> Read More</a></p>
+										
+										<p class="nottrunc"><%= y.full_answer.to_s %><a class="read-less" href="#"> Read Less</a></p>
+									<% else %>
+										<%= y.full_answer.to_s %>
+									<% end %>
 									<div class="author" style="margin-top:5px;">
 										<p><%= y.user.full_name.to_s %> / Posted at <span><%= y.created_at.to_s %></span></p>
 									</div>

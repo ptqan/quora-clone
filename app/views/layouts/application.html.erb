@@ -4,15 +4,15 @@
 		<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<!-- css -->
-  	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-		<link rel="icon" href="img/favicon.png" type="image/x-icon">
+  	<link rel="shortcut icon" href="<%= base_url %>/img/favicon.png" type="image/x-icon">
+		<link rel="icon" href="<%= base_url %>/img/favicon.png" type="image/x-icon">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<link rel="stylesheet" href="<%= base_url %>/css/application.css">
+  	<link rel="stylesheet" href="/css/application.css">
 
   	<!-- java -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="<%= base_url %>/js/application.js"></script>
+  	<script type="text/javascript" src="/js/application.js"></script>
 
 	</head>
 
@@ -82,7 +82,7 @@
           <table style="width:100%">
             <tr>
               <td style="width:50%" valign="top">
-                <form action="/users" method="post">
+                <form id="target" action="/users/ajax" method="post">
                   <table width="100%">
                     <tr>
                       <td><h2>Sign up</h2></td>
@@ -100,13 +100,13 @@
                       <td style="padding-top:10px"><input type="submit" value="Sign Up"></td>
                     </tr>
                     <tr>
-                      <td><%= @flash_msg %></td>
+                      <td style="padding-top:10px;"><p id="errors"></p></td>
                     </tr>
                   </table>
                 </form>
               </td>
               <td width="50%" valign="top">
-                <form id="login" action="/login" method="post">
+                <form id="login" action="/login/ajax" method="post">
                   <table width="100%">
                     <tr>
                       <td><h2>Login</h2></td>
@@ -121,7 +121,7 @@
                       <td style="padding-top:10px"><input type="submit" value="Login"></td>
                     </tr>
                     <tr>
-                      <td><%= @login_msg %></td>
+                      <td style="padding-top:10px;"><p id="errors-login"></p></td>
                     </tr>
                   </table>
                 </form>

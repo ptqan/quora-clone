@@ -17,7 +17,19 @@ get '/questions/new' do
 	erb :"questions/new.html"
 end
 
+#Pull HTML for edit question
+get '/questions/:id/edit' do
+	@edit_question = Question.find(params[:id])
+	erb :"questions/edit.html"
+end
 
+#Update question
+put '/questions/:id' do
+	@edited_question = Question.find(params[:id])
+	@edited_question.update(full_question: params[:updated_question])
+	@my_questions = current_user.questions
+	erb :"questions/show.html"
+end
 
 
 post '/questions' do 
@@ -30,21 +42,9 @@ post '/questions' do
 	end
 end
 
-get '/questions/:id/edit' do
-	@edit_question = Question.find(params[:id])
-	erb :"questions/edit.html"
-end
-
-put '/questions/:id' do
-	@edited_question = Question.find(params[:id])
-	@edited_question.update(full_question: params[:updated_question])
-	@my_questions = current_user.questions
-	erb :"questions/index.html"
-end
-
 post '/questions/:id' do
 	@deleted_question = Question.find(params[:id])
 	@deleted_question.destroy
 	@my_questions = current_user.questions
-	erb :"questions/index.html"
+	erb :"questions/show.html"
 end
