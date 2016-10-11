@@ -1,10 +1,97 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700';
+@import 'https://fonts.googleapis.com/css?family=Podkova:700';
 
 $font-stack:   'Open Sans', sans-serif;
-$header_fonts: 'Montserrat', sans-serif;
+$header_fonts: 'Podkova', serif;
 $primary-color: #000000;
 $spacing: 20px;
 $border-color: 1px solid #EBEBEB;
+$theme-color: #0A4B8A;
+
+h2 {
+	font-family: $header_fonts;
+	color:#333333;
+}
+
+h3 {
+	font-family: $header_fonts;
+	color:#333333;
+	font-size:18px;
+}
+
+h4 {
+	font-family: $header_fonts;
+	color:$theme-color;
+	font-size:20px;
+}
+
+.btns {
+	-webkit-appearance: none;
+    background-color: $theme-color;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    border-radius: 0;
+    transition: background-color 0.5s ease;
+    display:inline-block;
+    margin-top:5px;
+}
+
+.btns:hover {
+	background-color: #000000;
+	text-decoration:none;
+}
+
+.navbar-brand {
+	color:$theme-color!important;
+	font-family: $header-fonts;
+	font-size: 25px;
+}
+
+/* For all buttons and text */
+input[type=text], input[type=password] {
+	padding:10px;
+	width:100%;
+	font-size:16px;
+}
+
+input[type=submit], a.btns, a.vote-up, a.vote-down {
+	  -webkit-appearance: none;
+    background-color: $theme-color;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    border-radius: 0;
+    transition: background-color 0.5s ease;
+    display:inline-block;
+}
+
+
+input[type=submit]:hover, a.btns:hover{
+	background-color: #000000;
+	text-decoration:none;
+}
+
+textarea {
+	max-width:100%;
+	width:100%;
+	height:200px;
+	max-height:200px;
+	padding:20px;
+	font-size:16px;
+}
+
+.modal-body {
+	table tr td {
+		padding-top:5px;
+
+		input[type="text"], input[type="password"] {
+			width:90%;
+			font-size:14px;
+			padding:10px;
+		}
+	}
+}
 
 
 body {
@@ -12,20 +99,117 @@ body {
   color: $primary-color;
 }
 
+/* Login Page */
 .form-controller {
-	margin-top:$spacing;
+	margin-top:10%;
 	text-align:center;
-	padding: $spacing;
-	border: $border-color;
 }
 
+.form {
+	border:1px solid #EBEBEB;
+	padding: $spacing;
+	margin-top: $spacing;
+
+	form table {
+		width:100%;
+
+		tr td {
+			padding-top:$spacing;
+		}
+	}
+}
+		
 #footer {
+	// position:absolute;
+	// right:0;
+	// bottom:0;
+	// left:0;
 	text-align:center;
 	border-top: $border-color;
 	padding-top: $spacing;
+	padding-bottom: $spacing;
 	margin-top: $spacing;
-	
 }
+
+.sidebar {
+	ul {
+		list-style:none;
+		margin:0;
+		padding:0;
+		margin-top:10px;
+
+		li {
+			margin-top:5px;
+		}
+	}
+}
+
+.stories {
+	ul {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+
+	.author {
+		p {
+			color:#777777;
+			font-size:12px
+		}
+	}
+
+	.answers {
+		ul li {
+			border: $border-color;
+			margin-top:10px;
+			padding:20px;
+		}
+	}
+}
+
+
+
+.votes {
+	input[type=submit], a.vote-up, a.vote-down {
+		font-size:12px;
+	}
+
+	.downvote, a.vote-down {
+		background-color:#FF0000
+	}
+
+	.upvote, a.vote-up  {
+		background-color:#3b8a0a;
+		text-decoration:none;
+	}
+
+	a.vote-up:hover, a.vote-down:hover {
+		background:#000000;
+		text-decoration:none;
+	}
+}
+
+.editables {
+	.btns, .form-btns {
+		font-size:12px;
+		margin:0;
+	}
+}
+
+.border-thick {
+	 border:3px solid $theme-color; 
+	 width:20%
+}
+
+.selected {
+	background-color:#000000;
+	color:#FFFFFF;
+	padding:5px;
+	width:100%;
+	display:inline-block
+}
+
+
 
 
 

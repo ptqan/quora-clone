@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2 sidebar">
+			<!-- Sidebar menu !-->
+			<h3>Categories</h3>
+			<div class="border-thick"></div>
+			<ul>
+				<li><a href="/read">Top Stories</a></li>
+				<% if logged_in? %>
+				<li><a href="/my_questions">My Questions</a></li>
+				<li><a href="#" class="selected">My Answers</a></li>
+				<% else %>
+				<li><a href="#" data-toggle="modal" data-target="#myModal">My Questions</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#myModal" class="selected">My Answers</a></li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-sm-10 stories">
+			<!-- Main listing page !-->
+			<h2>My Answers</h2>
+			<hr>
+			<ul>
+					<% @my_answers.each do |x|%>
+					<li>
+						<h4><%= x.full_answer.to_s %></h4>
+						<div class="author">
+							<p><%= x.user.full_name.to_s %> / Posted at <span><%= x.created_at.to_s %></span></p>
+						</div>
+
+						<div class="editables">
+						<!-- Buttons !-->
+						<table>
+							<tr>
+								<td valign="top">
+									<a class="btns" href="/questions/<%= x.question.id %>/answers/<%= x.id %>/edit">Edit</a>
+								</td>
+								<td valign="top">
+									<form action="/questions/<%= x.question.id %>/answers/<%= x.id %>" method="post" class="form-btns">
+										<input type="submit" value="Delete">
+									</form>
+								</td>
+							</tr>
+						</table>
+					</div>
+					</li>
+					<hr>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>

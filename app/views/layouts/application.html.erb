@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<title>The Techy Quora App</title>
+		<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<!-- css -->
+  	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+		<link rel="icon" href="img/favicon.png" type="image/x-icon">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="<%= base_url %>/css/application.css">
+
+  	<!-- java -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="<%= base_url %>/js/application.js"></script>
+
+	</head>
+
+	<body>
+		
+		<!-- Content in Rails !-->
+		<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Quora</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="/read">Read</a></li>
+              <% if logged_in? %>
+              <li><a href="/all_questions">Answer</a></li>
+              <li><a href="/questions/new">Ask a question</a></li>
+              <% else %>
+              <li><a href="#" data-toggle="modal" data-target="#myModal">Answer</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#myModal">Ask a question</a></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if logged_in? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome <%= current_user.full_name %> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/users/show">Dashboard</a></li>
+                  <li><a href="/logout">Log Out</a></li>        
+                </ul>
+              </li>
+              <% else %>
+              <li><button type="button" class="btns" data-toggle="modal" data-target="#myModal">Log in</button></li>
+
+              <% end %> 
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+		<%= yield %>
+
+		<section id="footer">
+			<div class="container">
+				© 2016 - Ee Soon Seng / Sept 2016
+			</div>
+		</section>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign up for Quora</h4>
+        </div>
+        <div class="modal-body">
+          <table style="width:100%">
+            <tr>
+              <td style="width:50%" valign="top">
+                <form action="/users" method="post">
+                  <table width="100%">
+                    <tr>
+                      <td><h2>Sign up</h2></td>
+                    </tr>
+                    <tr>
+                      <td><input type="text" name="full_name" placeholder="Full Name"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="text" name="email" placeholder="Email"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="password" name="password" placeholder="Password"></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top:10px"><input type="submit" value="Sign Up"></td>
+                    </tr>
+                    <tr>
+                      <td><%= @flash_msg %></td>
+                    </tr>
+                  </table>
+                </form>
+              </td>
+              <td width="50%" valign="top">
+                <form id="login" action="/login" method="post">
+                  <table width="100%">
+                    <tr>
+                      <td><h2>Login</h2></td>
+                    </tr>
+                    <tr>
+                      <td><input type="text" name="email" placeholder="Email"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="password" name="password" placeholder="Password"></td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top:10px"><input type="submit" value="Login"></td>
+                    </tr>
+                    <tr>
+                      <td><%= @login_msg %></td>
+                    </tr>
+                  </table>
+                </form>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+	</body>
+</html>
+

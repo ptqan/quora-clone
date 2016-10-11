@@ -1,0 +1,60 @@
+<div class="container">
+	<div class="form-controller">
+		<div class="row">
+			<img src="img/quora-logo.jpg">
+		</div>
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div class="row form">
+					<div class="col-sm-6">
+						<form action="/users" method="post">
+							<table>
+								<tr>
+									<td><h2>Sign up</h2></td>
+								</tr>
+								<tr>
+									<td><input type="text" name="full_name" placeholder="Full Name"></td>
+								</tr>
+								<tr>
+									<td><input type="text" name="email" placeholder="Email"></td>
+								</tr>
+								<tr>
+									<td><input type="password" name="password" placeholder="Password"></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="Sign Up"></td>
+								</tr>
+								<tr>
+									<td><%= @flash_msg %></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<div class="col-sm-6">
+						<form id="login" action="/login" method="post">
+							<table>
+								<tr>
+									<td><h2>Login</h2></td>
+								</tr>
+								<tr>
+									<td><input type="text" name="email" placeholder="Email"></td>
+								</tr>
+								<tr>
+									<td><input type="password" name="password" placeholder="Password"></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="Login"></td>
+								</tr>
+								<tr>
+									<td><%= @login_msg %></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+</div>

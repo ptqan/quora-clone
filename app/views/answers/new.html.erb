@@ -1,0 +1,22 @@
+<!-- This is answer index !-->
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2 sidebar">
+			<!-- Sidebar menu !-->
+			<h3>Categories</h3>
+			<div class="border-thick"></div>
+			<ul>
+				<li><a href="/read">Top Stories</a></li>
+				<li><a href="/my_questions">My Questions</a></li>
+				<li><a href="/my_answers">My Answers</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-10">
+			<h2><%= @current_question.full_question %></h2>
+			<form action="/questions/<%= @current_question.id %>/answers" method="post">
+			<textarea name="answer_question"></textarea>
+			<input type="submit" value="Answer">
+		</form>
+		</div>
+	</div>
+</div>

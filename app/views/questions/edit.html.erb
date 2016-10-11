@@ -1,0 +1,24 @@
+<!-- This is answer index !-->
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2 sidebar">
+			<!-- Sidebar menu !-->
+			<h3>Categories</h3>
+			<div class="border-thick"></div>
+			<ul>
+				<li><a href="/read">Top Stories</a></li>
+				<li><a href="#" class="selected">My Questions</a></li>
+				<li><a href="/my_answers">My Answers</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-10">
+			<h2>Edit your question</h2>
+			<form action="/questions/<%= @edit_question.id %>" method="post">
+				<input type="hidden" name="_method" value="put">
+				<textarea name="updated_question"><%= @edit_question.full_question %></textarea>
+				<br/>
+				<input type="submit" value="Update!">
+			</form>
+		</div>
+	</div>
+</div>

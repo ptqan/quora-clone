@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-2 sidebar">
+			<!-- Sidebar menu !-->
+			<h3>Categories</h3>
+			<div class="border-thick"></div>
+			<ul>
+				<li><a href="/read">Top Stories</a></li>
+				<li><a href="#" class="selected">My Questions</a></li>
+				<li><a href="/my_answers">My Answers</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-10 stories">
+			<!-- Main listing page !-->
+			<h2>My Questions</h2>
+			<hr>
+
+			<ul>
+				<% @my_questions.reverse_each do |x|%>
+				<li>
+					<h4><%= x.full_question.to_s %></h4>
+					<div class="author">
+						<p><%= x.user.full_name.to_s %> / Posted at <span><%= x.created_at.to_s %></span></p>
+					</div>
+
+					<div class="editables">
+						<!-- Buttons !-->
+						<table>
+							<tr>
+								<td valign="top">
+									<a class="btns" href="/questions/<%= x.id %>/edit">Edit</a>
+								</td>
+								<td valign="top">
+									<form action="/questions/<%= x.id %>" method="post" class="form-btns">
+										<input type="submit" value="Delete">
+									</form>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<hr>
+				<% end %>
+			</ul>
+
+		</div>
+	</div>
+</div>
