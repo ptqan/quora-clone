@@ -22,7 +22,7 @@
 			<ul>
 					<% @my_answers.each do |x|%>
 					<li>
-						<h4><%= x.full_answer.to_s %></h4>
+						<p><pre><%= x.full_answer.to_s %></pre></p>
 						<div class="author">
 							<p><%= x.user.full_name.to_s %> / Posted at <span><%= x.created_at.to_s %></span></p>
 						</div>

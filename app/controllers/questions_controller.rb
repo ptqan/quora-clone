@@ -31,7 +31,7 @@ put '/questions/:id' do
 	erb :"questions/show.html"
 end
 
-
+#Add Question (Create/Post)
 post '/questions' do 
 	@question = current_user.questions.new(full_question: params[:description])
 	if @question.save
@@ -42,6 +42,7 @@ post '/questions' do
 	end
 end
 
+#Delete Question
 post '/questions/:id' do
 	@deleted_question = Question.find(params[:id])
 	@deleted_question.destroy

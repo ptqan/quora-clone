@@ -7,6 +7,9 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+# Pagination
+gem 'will_paginate', '~> 3.0.6'
+
 # Adding thin gem as advised
 gem 'thin'
 

@@ -1,9 +1,25 @@
+#Static Index Page
 get '/' do
 	if session[:user_id] != nil
 		redirect to '/read'
 	else
   	redirect to '/login'
   end
+end
+
+#Login Page (Returns HTML for creating new account)
+get '/login' do
+	erb :"users/new.html"
+end
+
+#Top Stories Page (questions/index)
+get '/read' do
+	@questions = Question.paginate(:page => params[:page], :per_page => 5)
+	@answers = Answer.all
+	@answer_votes = AnswerVote.all
+	#@posts = Post.paginate(:page => params[:page])
+	#@user = User.find_by(id: session[:user_id])
+	erb :"static/index.html"
 end
 
 #Login Normal
@@ -56,6 +72,7 @@ post '/users/ajax' do
    end
 end
 
+#Logout Page
 get '/logout' do
 	user = User.find_by(id: session[:user_id])
 	session[:user_id] = nil
@@ -63,24 +80,15 @@ get '/logout' do
 	redirect to '/login'
 end
 
-get '/login' do
-	erb :"users/new.html"
-end
 
-#Listing Page
-get '/read' do
-	@questions = Question.all
-	@answers = Answer.all
-	@answer_votes = AnswerVote.all
-	#@user = User.find_by(id: session[:user_id])
-	erb :"static/index.html"
-end
 
-get '/users/show' do
-	@questions = current_user.questions
-	@answers = current_user.answers
-	@user = User.find_by(id: session[:user_id])
-	erb :"/users/show.html"
-end
+
+
+# get '/users/show' do
+# 	@questions = current_user.questions
+# 	@answers = current_user.answers
+# 	@user = User.find_by(id: session[:user_id])
+# 	erb :"/users/show.html"
+# end
 
 

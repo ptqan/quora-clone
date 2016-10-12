@@ -34,11 +34,11 @@
 								<p style="font-size:16px; color:#000000"><% x.answers.reverse_each do |y| %></p>
 								<li>
 									<% if y.full_answer.to_s.length > 100 %>
-										<p class="trunc"><%= y.full_answer.to_s.truncate_words(30) %> <a href="#" class="read-more"> Read More</a></p>
+										<pre><p class="trunc"><%= y.full_answer.to_s.truncate_words(30) %><a href="#" class="read-more"> Read More</a></p></pre>
 										
-										<p class="nottrunc"><%= y.full_answer.to_s %><a class="read-less" href="#"> Read Less</a></p>
+										<pre><p class="nottrunc"><%= y.full_answer.to_s %><a class="read-less" href="#"> Read Less</a></p></pre>
 									<% else %>
-										<%= y.full_answer.to_s %>
+										<pre><%= y.full_answer.to_s %></pre>
 									<% end %>
 									<div class="author" style="margin-top:5px;">
 										<p><%= y.user.full_name.to_s %> / Posted at <span><%= y.created_at.to_s %></span></p>
@@ -88,6 +88,7 @@
 				<hr>
 				<% end %>
 			</ul>
+			<%= will_paginate @questions %>
 
 		</div>
 	</div>
